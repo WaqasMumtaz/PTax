@@ -1,14 +1,102 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, {useState , useEffect} from 'react'
+import { StyleSheet, Text, View, SafeAreaView , FlatList} from 'react-native'
+import Components from '../../Components'
+import Global from '../../Global'
+import videoImg from '../../Assets/video_img.png';
+
 
 const Videos = () => {
-  return (
-    <View>
-      <Text>Videos</Text>
-    </View>
-  )
+    const [authObj, setAuthObj] = useState({
+        search: ''
+    })
+
+    function handleChange(name, value) {
+        console.log('Name >>>>>>', name, 'Value >>>>>>', value);
+        setAuthObj({
+            ...authObj,
+            [name]: value,
+        });
+    }
+
+    const DATA = [{
+        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+        title: "Sales Tax and Federal Excise Duty Budget Instructions- (Budget 2014)",
+        timeStamp: "12:47 PM",
+        subTitle: "Quarter-1 ",
+        avatarUrl: videoImg
+       // avatarUrl: "https://www.google.com/search?q=fbr+tax+collection+images&rlz=1C1ONGR_enPK976PK976&sxsrf=ALiCzsbp0_n_n92v8yIfya4WhFIWUOPjEQ:1662404600891&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj229Xdq_75AhWpMlkFHUMMDf8Q_AUoAnoECAEQBA&biw=1280&bih=577&dpr=1.5#imgrc=hLmfBbQJXSDzlM"
+      }, {
+        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+        title: "Sales Tax and Federal Excise Budget Instruction 2017-2018",
+        timeStamp: "11:11 PM",
+        subTitle: "Quarter-2",
+        avatarUrl: videoImg
+        //avatarUrl: "https://www.google.com/search?q=fbr+tax+collection+images&rlz=1C1ONGR_enPK976PK976&sxsrf=ALiCzsbp0_n_n92v8yIfya4WhFIWUOPjEQ:1662404600891&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj229Xdq_75AhWpMlkFHUMMDf8Q_AUoAnoECAEQBA&biw=1280&bih=577&dpr=1.5#imgrc=by_xKEh1YSq2WM"
+      }, {
+        id: "58694a0f-3da1-471f-bd96-145571e29d72",
+        title: "Extension of income tax holiday on IT exports till 2025",
+        timeStamp: "6:22 PM",
+        subTitle: "Quarter-3",
+        avatarUrl: videoImg
+        //avatarUrl: "https://www.google.com/search?q=fbr+tax+collection+images&rlz=1C1ONGR_enPK976PK976&sxsrf=ALiCzsbp0_n_n92v8yIfya4WhFIWUOPjEQ:1662404600891&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj229Xdq_75AhWpMlkFHUMMDf8Q_AUoAnoECAEQBA&biw=1280&bih=577&dpr=1.5#imgrc=4_ezFtQMlDkR1M"
+      }, {
+        id: "68694a0f-3da1-431f-bd56-142371e29d72",
+        title: "Reduction in sales tax to 5 percent in Islamabad Capital Territory",
+        timeStamp: "8:56 PM",
+        subTitle: "Quarter-4",
+        avatarUrl: videoImg
+       // avatarUrl: "https://www.google.com/search?q=fbr+tax+collection+images&rlz=1C1ONGR_enPK976PK976&sxsrf=ALiCzsbp0_n_n92v8yIfya4WhFIWUOPjEQ:1662404600891&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj229Xdq_75AhWpMlkFHUMMDf8Q_AUoAnoECAEQBA&biw=1280&bih=577&dpr=1.5#imgrc=4_ezFtQMlDkR1M"
+      }, {
+        id: "28694a0f-3da1-471f-bd96-142456e29d72",
+        title: "100 percent foreign ownership and 100 percent repatriation of capital and dividends",
+        timeStamp: "12:47 PM",
+        subTitle: "Quarter-5",
+        avatarUrl: videoImg
+       // avatarUrl: "https://www.google.com/search?q=fbr+tax+collection+images&rlz=1C1ONGR_enPK976PK976&sxsrf=ALiCzsbp0_n_n92v8yIfya4WhFIWUOPjEQ:1662404600891&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj229Xdq_75AhWpMlkFHUMMDf8Q_AUoAnoECAEQBA&biw=1280&bih=577&dpr=1.5#imgrc=B_pNo7CE4kUZmM"
+      }
+    ]
+
+    const renderItem = ({ item }) => (
+        <Components.MyCard
+         title={item.title}
+         subTitle={item.subTitle}
+         uri={item.avatarUrl}
+         time={item.timeStamp}
+         btn_title_1={'Delete'}
+         btn_title_2={'Favourite'}
+        />
+    )
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <View style={{marginVertical:30 , marginHorizontal: 16 }}>
+                <Components.InputField
+                    placeholder="Search"
+                    icon="search"
+                    name={'search'}
+                    handleChange={(name, value) => handleChange(name, value)}
+                    value={authObj.search}
+                // keyboardType={'email-address'}
+                />
+            </View>
+            <View style={{flex:1,marginHorizontal:16}}>
+            <FlatList
+                data={DATA.filter(v => v.title.toLowerCase().includes(authObj.search.toLowerCase()) ||
+                    v?.subTitle?.toLowerCase().includes(authObj.search.toLowerCase()))}
+                renderItem={renderItem}
+                keyExtractor={item => `item_${item.id}`}
+                ItemSeparatorComponent={()=> (<View style={{margin:15}}></View>)}
+            />
+            <View style={{margin:10}}/>
+            </View>
+        </SafeAreaView>
+    )
 }
 
 export default Videos
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+})

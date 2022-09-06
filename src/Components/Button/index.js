@@ -5,9 +5,9 @@ import Global from '../../Global'
 const MyButton = ({title , onClick , styleBtn, titleStyle}) => {
  
     const btnStyle = {
-        borderWidth:1,
+        borderWidth:2,
         borderColor:Global.main_color,
-        borderRadius:15,
+        borderRadius:20,
         backgroundColor:Global.white,
         padding:10,
         paddingHorizontal:20
@@ -21,7 +21,7 @@ const MyButton = ({title , onClick , styleBtn, titleStyle}) => {
     onPress={()=> onClick()}
     style={{...btnStyle, ...styleBtn}}
     >
-      <Text style={{..._titleStyle, ...titleStyle}}>{title}</Text>
+      <Text style={{..._titleStyle, ...titleStyle}}>{title.toUpperCase()}</Text>
     </TouchableOpacity>
   )
 }

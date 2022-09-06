@@ -6,25 +6,25 @@ import Global from '../../Global';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const MyCard = ({title , subTitle , uri, time}) => (
+const MyCard = ({title , subTitle , uri, time , btn_title_1, btn_title_2}) => (
   <View style={styles.card} elevation={5}>
     {/* <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} /> */}
     <View>
-      <Text>{title}</Text>
-      <Text>{subTitle}</Text>
-      <Text>{time}</Text>
+      <Text style={[styles.textStyle, {fontSize:18}]}>{title}</Text>
+      <Text style={[styles.textStyle, {fontSize:14}]}>{subTitle}</Text>
+      <Text style={[styles.textStyle, {fontSize:12}]}>{time}</Text>
     </View>
      <View>
       <Image source={uri} style={styles.imageStyle}/>
      </View>
     <View style={{flexDirection:'row',justifyContent:'flex-end', margin:10 }}>
        <MyButton
-       title={'Cancel'}
+       title={btn_title_1}
        onClick={()=> console.log('cancel')}
        />
        <View style={{margin:10}}/>
         <MyButton
-       title={'Ok'}
+       title={btn_title_2}
        onClick={()=> console.log('OK')}
        styleBtn={styles.btn_style}
        titleStyle={styles.titleStyle}
@@ -67,5 +67,8 @@ const styles = StyleSheet.create({
     resizeMode:'cover',
     height:150,
     width:'100%'
+  },
+  textStyle:{
+    marginVertical:5
   }
 })

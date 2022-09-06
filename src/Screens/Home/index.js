@@ -66,6 +66,8 @@ const Home = () => {
          subTitle={item.subTitle}
          uri={item.avatarUrl}
          time={item.timeStamp}
+         btn_title_1={'Cancel'}
+         btn_title_2={'OK'}
         />
     )
 

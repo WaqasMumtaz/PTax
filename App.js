@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,6 +18,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import SplashScreen from 'react-native-splash-screen'
 
 import Components from './src/Components';
 import Global from './src/Global';
@@ -51,6 +52,10 @@ const Section = ({ children, title }) => {
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  useEffect(()=> {
+    SplashScreen.hide();
+  }, [])
 
   const backgroundStyle = {
     flex: 1,
