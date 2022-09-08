@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, {useState , useEffect} from 'react'
 import { Divider } from 'react-native-paper';
 import IonicIcon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 import Global from '../../Global';
 
 
 const More = () => {
-
+   const navigation = useNavigation();
   const DATA = [{
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     title: "Revenu Detail",
@@ -36,8 +37,12 @@ const More = () => {
   }
   ]
 
+ function handleNavigate(titel){
+  navigation.navigate('Detail', {title : titel});
+  }
+
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.cardList}>
+    <TouchableOpacity style={styles.cardList} onPress={()=> handleNavigate(item.title)}>
       <View style={{marginLeft:10}}>
         <IonicIcon name={item.icon} color={Global.main_color} size={30} />
       </View>
