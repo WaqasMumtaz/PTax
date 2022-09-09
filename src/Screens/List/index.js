@@ -10,7 +10,7 @@ import video_4 from '../../Assets/gif_4.gif';
 import video_5 from '../../Assets/gif_5.gif';
 
 
-const Videos = () => {
+const List = () => {
     const [authObj, setAuthObj] = useState({
         search: ''
     })
@@ -116,7 +116,7 @@ const Videos = () => {
     )
 }
 
-export default Videos
+export default List
 
 const styles = StyleSheet.create({
     container: {

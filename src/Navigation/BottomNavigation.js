@@ -24,10 +24,10 @@ const BottomNavigation = () => {
           <FontAwesomeIcon size={size} color={color} name='home'/>
        )}}
       />
-      <Tab.Screen name="Videos" component={Screens.Videos} 
+      <Tab.Screen name="List" component={Screens.List} 
       options={{
         tabBarIcon: ({ color, size , focused }) => (
-          <FontAwesomeIcon size={size} color={color} name='video'/>
+          <FontAwesomeIcon size={size} color={color} name='list'/>
        )}}
       />
       <Tab.Screen name="More" component={Screens.More} 

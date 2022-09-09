@@ -1,11 +1,11 @@
 import Home from "./Home";
-import Videos from "./Videos";
+import List from "./List";
 import More from "./More";
 import DetailsPage from "./Details";
 
 export default {
     Home,
-    Videos,
+    List,
     More,
     DetailsPage
 }
