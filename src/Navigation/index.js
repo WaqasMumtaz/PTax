@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import BottomNavigation from './BottomNavigation'
 import MainNavigation from './MainNavigation';
-const MainNavigation = () => {
+const Navigation = () => {
   return (
     <>
       <MainNavigation/>
@@ -10,4 +10,4 @@ const MainNavigation = () => {
   )
 }
 
-export default MainNavigation;
+export default Navigation;

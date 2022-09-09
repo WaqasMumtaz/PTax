@@ -6,7 +6,7 @@ import Global from '../../Global';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const MyCard = ({title , subTitle , uri, time , btn_title_1, btn_title_2}) => (
+const MyCard = ({title , subTitle , uri, time , btn_title_1, btn_title_2, gif_style, handleSubmit}) => (
   <View style={styles.card} elevation={5}>
     {/* <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} /> */}
     <View>
@@ -15,17 +15,17 @@ const MyCard = ({title , subTitle , uri, time , btn_title_1, btn_title_2}) => (
       <Text style={[styles.textStyle, {fontSize:12}]}>{time}</Text>
     </View>
      <View>
-      <Image source={uri} style={styles.imageStyle}/>
+      <Image source={uri} style={gif_style ? gif_style : styles.imageStyle}/>
      </View>
     <View style={{flexDirection:'row',justifyContent:'flex-end', margin:10 }}>
        <MyButton
        title={btn_title_1}
-       onClick={()=> console.log('cancel')}
+       onClick={()=> handleSubmit(btn_title_1)}
        />
        <View style={{margin:10}}/>
         <MyButton
        title={btn_title_2}
-       onClick={()=> console.log('OK')}
+       onClick={()=> handleSubmit(btn_title_2)}
        styleBtn={styles.btn_style}
        titleStyle={styles.titleStyle}
        />

@@ -22,7 +22,7 @@ import SplashScreen from 'react-native-splash-screen'
 
 import Components from './src/Components';
 import Global from './src/Global';
-import MainNavigation from './src/Navigation';
+import Navigation from './src/Navigation';
 
 const Section = ({ children, title }) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -67,7 +67,7 @@ const App = () => {
       <Components.MyStatusBar backgroundColor={Global.main_color} barStyle="light-content" />
       <SafeAreaView style={backgroundStyle}>
         <NavigationContainer>
-          <MainNavigation />
+          <Navigation />
         </NavigationContainer>
       </SafeAreaView>
     </>
